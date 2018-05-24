@@ -24,23 +24,27 @@ Vagrant.configure("2") do |config|
     # vb.gui = true
 
     # Customize the amount of memory on the VM:
-    vb.memory = "512"
+    vb.memory = "256"
   end
 
-  config.vm.define 'web1' do |sub_config|
-    sub_config.vm.network 'private_network', ip: "192.168.33.111"
+  config.vm.define 'web1' do |app|
+    app.vm.hostname = 'web1.ersolution.net'
+    app.vm.network :private_network, ip: "192.168.33.111"
   end
 
-  config.vm.define 'web2' do |sub_config|
-    sub_config.vm.network 'private_network', ip: "192.168.33.112"
+  config.vm.define 'web2' do |app|
+    app.vm.hostname = 'web2.ersolution.net'
+    app.vm.network :private_network, ip: "192.168.33.112"
   end
 
-  config.vm.define 'db1' do |sub_config|
-    sub_config.vm.network 'private_network', ip: "192.168.33.121"
+  config.vm.define 'db1' do |app|
+    app.vm.hostname = 'db1.ersolution.net'
+    app.vm.network :private_network, ip: "192.168.33.121"
   end
 
-  config.vm.define 'db2' do |sub_config|
-    sub_config.vm.network 'private_network', ip: "192.168.33.122"
+  config.vm.define 'db2' do |app|
+    app.vm.hostname = 'db2.ersolution.net'
+    app.vm.network :private_network, ip: "192.168.33.122"
   end
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -71,16 +75,6 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    # vb.gui = true
-
-    # Customize the amount of memory on the VM:
-    vb.memory = "512"
-  end
-  #
   # View the documentation for the provider you are using for more
   # information on available options.
 
